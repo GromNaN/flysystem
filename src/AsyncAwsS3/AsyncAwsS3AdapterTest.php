@@ -58,6 +58,7 @@ class AsyncAwsS3AdapterTest extends FilesystemAdapterTestCase
         $key = getenv('FLYSYSTEM_AWS_S3_KEY');
         $secret = getenv('FLYSYSTEM_AWS_S3_SECRET');
         $region = getenv('FLYSYSTEM_AWS_S3_REGION') ?: 'eu-central-1';
+        $pathStyleEndpoint = (bool) getenv('FLYSYSTEM_AWS_S3_PATH_STYLE_ENDPOINT');
 
         if ( ! $key || ! $secret) {
             self::markTestSkipped('No AWS credentials present for testing.');
@@ -67,6 +68,7 @@ class AsyncAwsS3AdapterTest extends FilesystemAdapterTestCase
             'accessKeyId' => $key,
             'accessKeySecret' => $secret,
             'region' => $region,
+            'pathStyleEndpoint' => $pathStyleEndpoint,
         ];
     }
 
